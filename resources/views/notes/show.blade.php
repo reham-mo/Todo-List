@@ -30,6 +30,7 @@
                         @csrf 
                         @method('DELETE')     
                 @if (Auth::user())
+                
                         <a href="/notes" class="card-link"> &larr; go back</a> 
                         @elseif (isset(Auth::user()->id) && Auth::user()->id == $note->user_id)
                         <a href="{{ route('notes.edit', $notes->id)}}" class="card-link">edit</a>
