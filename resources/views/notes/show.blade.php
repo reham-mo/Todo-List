@@ -13,7 +13,6 @@
 
                 <p class="toppings"> Expected time to finish:</p>
 
-              
                      @php
                        $tiime = trim($notes->time, ' [] ');
                        $tiimes = str_replace('"', '', $tiime);
@@ -29,13 +28,11 @@
                <form action="{{route('notes.destroy', $notes->id)}}" method="POST">
                         @csrf 
                         @method('DELETE')     
-                @if (Auth::user())
-                
                         <a href="/notes" class="card-link"> &larr; go back</a> 
-                        @elseif (isset(Auth::user()->id) && Auth::user()->id == $note->user_id)
+                    @if (isset(Auth::user()->id) && Auth::user()->id == $notes->user_id)
                         <a href="{{ route('notes.edit', $notes->id)}}" class="card-link">edit</a>
                         <button type="submit" class="btn btn-link">delete </button>
-                 @endif       
+                    @endif       
                 </form>
                 </div>
             </div>
